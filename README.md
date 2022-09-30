@@ -1,10 +1,10 @@
-# terraform-module-template
+# terraform-github
 
 <a href="https://www.opsd.io" target="_blank"><img alt="OPSd" src=".github/img/OPSD_logo.svg" width="150px"></a>
 
 ## Introduction
 
-What does the module provide?
+A Terraform module for creating and managing GitHub repositories.
 
 ## Usage
 
@@ -19,7 +19,8 @@ The list of related modules.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.9 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.1 |
+| <a name="requirement_github"></a> [github](#requirement\_github) | >= 5.3.0 |
 
 ## Providers
 
