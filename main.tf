@@ -1,7 +1,3 @@
-locals {
-
-}
-
 # Create repo from the template
 
 resource "github_repository" "main" {
