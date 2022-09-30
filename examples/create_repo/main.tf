@@ -1,21 +1,27 @@
 module "terraform-github" {
   source = "../../"
 
-  name        = var.repository_name
-  description = var.repository_description
-  visibility  = var.repository_visibility
+  # Setup basic repository settings
+  repository_name        = "test_repo"
+  repository_description = "Brief description of the test_repo project."
+  repository_visibility  = "public"
 
-  has_issues   = var.repository_has_issues
-  has_wiki     = var.repository_has_wiki
-  has_projects = var.repository_has_projects
+  # Enabling/disabling repository features
+  repository_has_issues   = true
+  repository_has_wiki     = true
+  repository_has_projects = true
 
-  delete_branch_on_merge = var.repository_delete_branch_on_merge
+  # Manually/automatically delete head branch after a pull request is merged.
+  repository_delete_branch_on_merge = false
 
-  repository = var.repository_template_repository
-  owner      = var.repository_template_owner
+  # Use the terraform-module-template repo owned by the opsd-io team as template
+  repository_template_repository = "terraform-module-template"
+  repository_template_owner      = "opsd-io"
 
-  pattern = var.repository_tag_protection_pattern
+  # Set tag protection
+  repository_tag_protection_pattern = "v*"
 
-  branch = var.repository_default_branch
-  teams  = var.repository_owners
+  # Set default branch to `main`, make it protected and owned by the `terraformers` team.
+  repository_default_branch = "main"
+  repository_owners         = ["terraformers"]
 }
