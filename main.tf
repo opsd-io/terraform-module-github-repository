@@ -42,19 +42,19 @@ resource "github_issue_label" "chore" {
   repository  = github_repository.main.name
   name        = "chore"
   description = "Changes to the build process or auxiliary tools and libraries such as documentation generation"
-  color       = "#E9C978"
+  color       = "E9C978"
 }
 
 resource "github_issue_label" "skip_changelog" {
   repository  = github_repository.main.name
   name        = "skip-changelog"
   description = "Exclude commit or PR from the changelog"
-  color       = "#E8B4CF"
+  color       = "E8B4CF"
 }
 
 resource "github_issue_label" "breaking" {
   repository  = github_repository.main.name
   name        = "breaking"
   description = "Breaking changes"
-  color       = "#C0084C"
+  color       = "C0084C"
 }
