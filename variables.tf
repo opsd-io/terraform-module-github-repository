@@ -51,3 +51,9 @@ variable "repository_template_repository" {
   type        = string
   default     = "terraform-module-template"
 }
+
+variable "repository_tag_protection_pattern" {
+  description = "The pattern of the tag to protect."
+  type        = string
+  default     = "v*"
+}

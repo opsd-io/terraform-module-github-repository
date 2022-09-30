@@ -20,3 +20,8 @@ resource "github_repository" "main" {
   }
 
 }
+
+resource "github_repository_tag_protection" "main" {
+  repository = var.repository_name
+  pattern    = var.repository_tag_protection_pattern
+}
