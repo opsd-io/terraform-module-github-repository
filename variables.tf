@@ -57,3 +57,15 @@ variable "repository_tag_protection_pattern" {
   type        = string
   default     = "v*"
 }
+
+variable "repository_default_branch" {
+  description = "The default branch name."
+  type        = string
+  default     = "main"
+}
+
+variable "repository_owners" {
+  description = "The team(s) that are responsible for the repository."
+  type        = list(string)
+  default     = ["terraformers"]
+}
