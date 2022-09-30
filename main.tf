@@ -1,4 +1,7 @@
 # Create repo from the template
+provider "github" {
+  owner = "opsd-io"
+}
 
 resource "github_repository" "main" {
   name        = var.repository_name
@@ -20,12 +23,17 @@ resource "github_repository" "main" {
 }
 
 # Protect the main branch.
-resource "github_branch_protection_v3" "main" {
-  repository = github_repository.main.name
-  branch     = var.repository_default_branch
 
-  restrictions {
-    teams = var.repository_owners
+resource "github_branch_protection_v3" "main" {
+  repository     = github_repository.main.name
+  branch         = var.repository_default_branch
+  enforce_admins = true
+
+  require_conversation_resolution = var.repository_require_conversation_resolution
+
+  required_pull_request_reviews {
+    require_code_owner_reviews      = var.repository_require_code_owner_reviews
+    required_approving_review_count = var.repository_required_approving_review_count
   }
 }
 

@@ -8,7 +8,7 @@ A Terraform module for creating and managing GitHub repositories.
 
 ## Usage
 
-The example of module usage.
+**IMPORTANT**: Do not pin to master because there may be breaking changes between releases. Instead pin to the release tag (e.g. ?ref=tags/x.y.z) of one of our latest releases.
 
 ```
 module "terraform-github" {
@@ -22,9 +22,11 @@ module "terraform-github" {
 }
 ```
 
+More examples can be found [here](examples).
+
 ## Related modules
 
-The list of related modules.
+No related modules.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -61,16 +63,18 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_repository_default_branch"></a> [repository\_default\_branch](#input\_repository\_default\_branch) | The default branch name. | `string` | `"main"` | no |
 | <a name="input_repository_delete_branch_on_merge"></a> [repository\_delete\_branch\_on\_merge](#input\_repository\_delete\_branch\_on\_merge) | Automatically delete head branch after a pull request is merged. | `bool` | `true` | no |
-| <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | `""` | no |
+| <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | `"test_repo desc"` | no |
 | <a name="input_repository_has_issues"></a> [repository\_has\_issues](#input\_repository\_has\_issues) | Enable the GitHub Issues on the repository. | `bool` | `true` | no |
 | <a name="input_repository_has_projects"></a> [repository\_has\_projects](#input\_repository\_has\_projects) | Enable the GitHub Project on the repository. | `bool` | `false` | no |
 | <a name="input_repository_has_wiki"></a> [repository\_has\_wiki](#input\_repository\_has\_wiki) | Enable the GitHub Wiki on the repository. | `bool` | `false` | no |
-| <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the repository. | `string` | `""` | no |
-| <a name="input_repository_owners"></a> [repository\_owners](#input\_repository\_owners) | The team(s) that are responsible for the repository. | `list(string)` | <pre>[<br>  "terraformers"<br>]</pre> | no |
+| <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the repository. | `string` | `"test_repo"` | no |
+| <a name="input_repository_require_code_owner_reviews"></a> [repository\_require\_code\_owner\_reviews](#input\_repository\_require\_code\_owner\_reviews) | Require code owners review before PR can be merged | `bool` | `true` | no |
+| <a name="input_repository_require_conversation_resolution"></a> [repository\_require\_conversation\_resolution](#input\_repository\_require\_conversation\_resolution) | Resolve all the comments before PR can be merged | `bool` | `true` | no |
+| <a name="input_repository_required_approving_review_count"></a> [repository\_required\_approving\_review\_count](#input\_repository\_required\_approving\_review\_count) | Require N aprovales before PR can be merged | `number` | `1` | no |
 | <a name="input_repository_tag_protection_pattern"></a> [repository\_tag\_protection\_pattern](#input\_repository\_tag\_protection\_pattern) | The pattern of the tag to protect. | `string` | `"v*"` | no |
 | <a name="input_repository_template_owner"></a> [repository\_template\_owner](#input\_repository\_template\_owner) | The GitHub organization or user the template repository is owned by. | `string` | `"opsd-io"` | no |
 | <a name="input_repository_template_repository"></a> [repository\_template\_repository](#input\_repository\_template\_repository) | Name of the (template) repository from which to create the new repository. | `string` | `"terraform-module-template"` | no |
-| <a name="input_repository_visibility"></a> [repository\_visibility](#input\_repository\_visibility) | Specify whether the created repository should be private or public. Available options `private` or `public`. | `string` | `"private"` | no |
+| <a name="input_repository_visibility"></a> [repository\_visibility](#input\_repository\_visibility) | Specify whether the created repository should be private or public. Available options `private` or `public`. | `string` | `"public"` | no |
 
 ## Outputs
 

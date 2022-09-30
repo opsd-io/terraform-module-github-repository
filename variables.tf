@@ -1,19 +1,19 @@
 variable "repository_name" {
   description = "The name of the repository."
   type        = string
-  default     = ""
+  default     = "test_repo"
 }
 
 variable "repository_description" {
   description = "Brief description of the project."
   type        = string
-  default     = ""
+  default     = "test_repo desc"
 }
 
 variable "repository_visibility" {
   description = "Specify whether the created repository should be private or public. Available options `private` or `public`."
   type        = string
-  default     = "private"
+  default     = "public"
 }
 
 variable "repository_has_issues" {
@@ -52,6 +52,24 @@ variable "repository_template_repository" {
   default     = "terraform-module-template"
 }
 
+variable "repository_require_conversation_resolution" {
+  description = "Resolve all the comments before PR can be merged"
+  type        = bool
+  default     = true
+}
+
+variable "repository_require_code_owner_reviews" {
+  description = "Require code owners review before PR can be merged"
+  type        = bool
+  default     = true
+}
+
+variable "repository_required_approving_review_count" {
+  description = "Require N aprovales before PR can be merged"
+  type        = number
+  default     = 1
+}
+
 variable "repository_tag_protection_pattern" {
   description = "The pattern of the tag to protect."
   type        = string
@@ -62,10 +80,4 @@ variable "repository_default_branch" {
   description = "The default branch name."
   type        = string
   default     = "main"
-}
-
-variable "repository_owners" {
-  description = "The team(s) that are responsible for the repository."
-  type        = list(string)
-  default     = ["terraformers"]
 }
