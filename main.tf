@@ -8,8 +8,13 @@ resource "github_repository" "main" {
 
   visibility = var.repository_visibility
 
+  has_issues   = var.repository_has_issues
+  has_wiki     = var.repository_has_wiki
+  has_projects = var.repository_has_projects
+
   template {
     owner      = var.repository_template_owner
     repository = var.repository_template_repository
   }
+
 }

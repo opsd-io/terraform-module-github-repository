@@ -43,6 +43,9 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | `""` | no |
+| <a name="input_repository_has_issues"></a> [repository\_has\_issues](#input\_repository\_has\_issues) | Enable the GitHub Issues on the repository. | `bool` | `true` | no |
+| <a name="input_repository_has_projects"></a> [repository\_has\_projects](#input\_repository\_has\_projects) | Enable the GitHub Project on the repository. | `bool` | `false` | no |
+| <a name="input_repository_has_wiki"></a> [repository\_has\_wiki](#input\_repository\_has\_wiki) | Enable the GitHub Wiki on the repository. | `bool` | `false` | no |
 | <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the repository. | `string` | `""` | no |
 | <a name="input_repository_template_owner"></a> [repository\_template\_owner](#input\_repository\_template\_owner) | The GitHub organization or user the template repository is owned by. | `string` | `"opsd-io"` | no |
 | <a name="input_repository_template_repository"></a> [repository\_template\_repository](#input\_repository\_template\_repository) | Name of the (template) repository from which to create the new repository. | `string` | `"terraform-module-template"` | no |

@@ -16,6 +16,24 @@ variable "repository_visibility" {
   default     = "private"
 }
 
+variable "repository_has_issues" {
+  description = "Enable the GitHub Issues on the repository."
+  type        = bool
+  default     = true
+}
+
+variable "repository_has_wiki" {
+  description = "Enable the GitHub Wiki on the repository."
+  type        = bool
+  default     = false
+}
+
+variable "repository_has_projects" {
+  description = "Enable the GitHub Project on the repository."
+  type        = bool
+  default     = false
+}
+
 variable "repository_template_owner" {
   description = "The GitHub organization or user the template repository is owned by."
   type        = string
