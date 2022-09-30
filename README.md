@@ -4,7 +4,7 @@
 
 ## Introduction
 
-A module for creating and managing GitHub repositories.
+A Terraform module for creating and managing GitHub repositories.
 
 ## Usage
 
