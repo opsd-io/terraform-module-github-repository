@@ -34,6 +34,12 @@ variable "repository_has_projects" {
   default     = false
 }
 
+variable "repository_delete_branch_on_merge" {
+  description = "Automatically delete head branch after a pull request is merged."
+  type        = bool
+  default     = true
+}
+
 variable "repository_template_owner" {
   description = "The GitHub organization or user the template repository is owned by."
   type        = string

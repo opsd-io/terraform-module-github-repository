@@ -12,6 +12,8 @@ resource "github_repository" "main" {
   has_wiki     = var.repository_has_wiki
   has_projects = var.repository_has_projects
 
+  delete_branch_on_merge = var.repository_delete_branch_on_merge
+
   template {
     owner      = var.repository_template_owner
     repository = var.repository_template_repository
