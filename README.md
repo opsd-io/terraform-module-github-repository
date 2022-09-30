@@ -10,6 +10,18 @@ A Terraform module for creating and managing GitHub repositories.
 
 The example of module usage.
 
+```
+module "terraform-github" {
+  source  = "github.com/opsd-io/terraform-github"
+	version = ">= 0.2.0"
+
+  # Setup basic repository settings
+  repository_name        = "test_repo"
+  repository_description = "Brief description of the test_repo project."
+  repository_visibility  = "public"
+}
+```
+
 ## Related modules
 
 The list of related modules.
