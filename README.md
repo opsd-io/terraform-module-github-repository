@@ -87,11 +87,11 @@ No outputs.
 
 ## Contributing
 
-[Contributing](CONTRIBUTING.md)
+If you are interested in contributing to the project, see see our [guide](CONTRIBUTING.md).
 
 ## Support
 
-If you have a problem with the module or want to propose a new feature, you can report it via the project's (Github) issue tracker.
+If you have a problem with the module or want to propose a new feature, you can report it via the project's (Github) [issue tracker](https://github.com/opsd-io/terraform-github/issues/new/choose).
 
 If you want to discuss something in person, you can join our community on [Slack](https://join.slack.com/t/opsd-community/signup).
 
