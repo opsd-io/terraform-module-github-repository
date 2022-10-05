@@ -23,5 +23,4 @@ module "terraform-github" {
 
   # Set default branch to `main`, make it protected and owned by the `terraformers` team.
   repository_default_branch = "main"
-  repository_owners         = ["terraformers"]
 }
