@@ -30,7 +30,7 @@ terrafrorm apply
 
 **IMPORTANT**: Please double-check the command output. The vital section can be seen in the example `Plan: 6 to add, 0 to change, 0 to destroy`. Ensure that you understand the changes you are making.
 
-You will be asked
+Next, you will be asked
 
 ```shell
 Do you want to perform these actions?
