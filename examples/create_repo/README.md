@@ -1,3 +1,21 @@
+# Create GitHub repo from the tempate
+
+```bash
+export GITHUB_TOKEN="ghp_your_github_token"
+```
+
+```shell
+terraform init
+```
+
+```shell
+terraform plan
+```
+
+```shell
+terrafrorm apply
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
