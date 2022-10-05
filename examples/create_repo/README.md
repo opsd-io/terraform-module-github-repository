@@ -40,7 +40,7 @@ Do you want to perform these actions?
   Enter a value:
 ```
 
-Type 'yes' to approve and let the magic happen.
+Type `yes` to approve and let the magic happen.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
