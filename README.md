@@ -1,6 +1,6 @@
 <a href="https://www.opsd.io" target="_blank"><img alt="OPSd" src=".github/img/OPSD_logo.svg" width="150px"></a>
 
-Meet OPSd. The unique and effortless way of managing cloud infrastructure.
+Meet **OPSd**. The unique and effortless way of managing cloud infrastructure.
 
 Visit our website [www.opsd.io](https://www.opsd.io) for more details.
 
