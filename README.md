@@ -1,4 +1,4 @@
-<a href="https://www.opsd.io" target="_blank"><img alt="OPSd" src=".github/img/OPSD_logo.svg" width="150px"></a>
+<a href="https://www.opsd.io" target="_blank"><img alt="OPSd" src=".github/img/OPSD_logo.svg" width="180px"></a>
 
 Meet **OPSd**. The unique and effortless way of managing cloud infrastructure.
 
@@ -8,16 +8,14 @@ Visit our website [www.opsd.io](https://www.opsd.io) for more details.
 
 ## Introduction
 
-A Terraform module for creating and managing GitHub repositories.
+A terraform module responsible for creating GitHub repositories from the templates.
 
 ## Usage
-
-**IMPORTANT**: Do not pin to master because there may be breaking changes between releases. Instead pin to the release tag (e.g. ?ref=tags/x.y.z) of one of our latest releases.
 
 ```
 module "terraform-github" {
   source  = "github.com/opsd-io/terraform-github"
-	version = ">= 0.2.0"
+	version = ">= 0.1.0"
 
   # Setup basic repository settings
   repository_name        = "test_repo"
@@ -26,7 +24,9 @@ module "terraform-github" {
 }
 ```
 
-More examples can be found [here](examples).
+**IMPORTANT**: Make sure not to pin to master because there may be breaking changes between releases.
+
+You can find more example [here](examples).
 
 ## Related modules
 
