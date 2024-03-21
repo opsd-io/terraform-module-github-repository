@@ -1,13 +1,11 @@
 variable "repository_name" {
   description = "The name of the repository."
   type        = string
-  default     = "test_repo"
 }
 
 variable "repository_description" {
   description = "Brief description of the project."
   type        = string
-  default     = "test_repo desc"
 }
 
 variable "repository_visibility" {
@@ -37,7 +35,7 @@ variable "repository_has_projects" {
 variable "repository_delete_branch_on_merge" {
   description = "Automatically delete head branch after a pull request is merged."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "repository_template_owner" {
@@ -53,19 +51,19 @@ variable "repository_template_repository" {
 }
 
 variable "repository_require_conversation_resolution" {
-  description = "Resolve all the comments before PR can be merged"
+  description = "Resolve all the comments before PR can be merged."
   type        = bool
   default     = true
 }
 
 variable "repository_require_code_owner_reviews" {
-  description = "Require code owners review before PR can be merged"
+  description = "Require code owners review before PR can be merged."
   type        = bool
   default     = true
 }
 
 variable "repository_required_approving_review_count" {
-  description = "Require N aprovales before PR can be merged"
+  description = "Require N aprovales before PR can be merged."
   type        = number
   default     = 1
 }
@@ -80,4 +78,9 @@ variable "repository_default_branch" {
   description = "The default branch name."
   type        = string
   default     = "main"
+}
+
+variable "maintainers_team_id" {
+  description = "The repository maintainers github team ID."
+  type        = string
 }

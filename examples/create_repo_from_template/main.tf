@@ -1,10 +1,13 @@
-module "terraform-github" {
-  source = "../../"
+module "example" {
+  source = "github.com/opsd-io/terraform-module-github-repository"
+
+  # Assign maintainers github team to the repo
+  maintainers_team_id = data.github_team.terraformers.id
 
   # Setup basic repository settings
   repository_name        = "test_repo"
   repository_description = "Brief description of the test_repo project."
-  repository_visibility  = "public"
+  repository_visibility  = "private"
 
   # Enabling/disabling repository features
   repository_has_issues   = true
