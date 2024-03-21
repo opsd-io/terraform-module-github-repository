@@ -1,3 +1,7 @@
+data "github_team" "terraformers" {
+  slug = "terraformers"
+}
+
 module "example" {
   source = "github.com/opsd-io/terraform-module-github-repository"
 
