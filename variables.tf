@@ -83,4 +83,5 @@ variable "repository_default_branch" {
 variable "maintainers_team_id" {
   description = "The repository maintainers github team ID."
   type        = string
+  default     = null
 }

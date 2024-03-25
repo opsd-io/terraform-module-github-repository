@@ -9,10 +9,6 @@ terraform {
   }
 }
 
-provider "github" {
-  owner = "opsd-io"
-}
-
 resource "github_repository" "main" {
   name        = var.repository_name
   description = var.repository_description
@@ -32,6 +28,8 @@ resource "github_repository" "main" {
 }
 
 resource "github_team_repository" "maintainers" {
+  for_each = var.maintainers_team_id != null ? { var.maintainers_team_id : "*" } : {}
+
   team_id    = var.maintainers_team_id
   repository = github_repository.main.name
   permission = "maintain"
