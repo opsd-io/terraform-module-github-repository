@@ -113,7 +113,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_maintainers_team_id"></a> [maintainers\_team\_id](#input\_maintainers\_team\_id) | The repository maintainers github team ID. | `string` | n/a | yes |
+| <a name="input_maintainers_team_id"></a> [maintainers\_team\_id](#input\_maintainers\_team\_id) | The repository maintainers github team ID. | `string` | `null` | no |
 | <a name="input_repository_default_branch"></a> [repository\_default\_branch](#input\_repository\_default\_branch) | The default branch name. | `string` | `"main"` | no |
 | <a name="input_repository_delete_branch_on_merge"></a> [repository\_delete\_branch\_on\_merge](#input\_repository\_delete\_branch\_on\_merge) | Automatically delete head branch after a pull request is merged. | `bool` | `false` | no |
 | <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | n/a | yes |
