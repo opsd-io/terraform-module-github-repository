@@ -28,7 +28,7 @@ resource "github_repository" "main" {
 }
 
 resource "github_team_repository" "maintainers" {
-  for_each = var.maintainers_team_id != null ? { var.maintainers_team_id : "*" } : {}
+  count = var.maintainers_team_id != null ? 1 : 0
 
   team_id    = var.maintainers_team_id
   repository = github_repository.main.name
