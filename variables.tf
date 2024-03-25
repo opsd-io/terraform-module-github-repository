@@ -85,3 +85,9 @@ variable "maintainers_team_id" {
   type        = string
   default     = null
 }
+
+variable "admins" {
+  description = "A set of users with an admin privileges."
+  type        = set(string)
+  default     = []
+}

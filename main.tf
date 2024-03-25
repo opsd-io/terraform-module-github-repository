@@ -35,6 +35,14 @@ resource "github_team_repository" "maintainers" {
   permission = "maintain"
 }
 
+resource "github_repository_collaborator" "admins" {
+  for_each = var.admins
+
+  username   = each.key
+  repository = github_repository.main.name
+  permission = "admin"
+}
+
 # Protect the main branch.
 
 resource "github_branch_protection_v3" "main" {
