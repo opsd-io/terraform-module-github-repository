@@ -121,7 +121,7 @@ No modules.
 | <a name="input_maintainer_teams"></a> [maintainer\_teams](#input\_maintainer\_teams) | A set of the repository admin teams IDs. | `set(string)` | `[]` | no |
 | <a name="input_maintainers"></a> [maintainers](#input\_maintainers) | A set of users with maintain privileges. | `set(string)` | `[]` | no |
 | <a name="input_repository_default_branch"></a> [repository\_default\_branch](#input\_repository\_default\_branch) | The default branch name. | `string` | `"main"` | no |
-| <a name="input_repository_delete_branch_on_merge"></a> [repository\_delete\_branch\_on\_merge](#input\_repository\_delete\_branch\_on\_merge) | Automatically delete head branch after a pull request is merged. | `bool` | `false` | no |
+| <a name="input_repository_delete_branch_on_merge"></a> [repository\_delete\_branch\_on\_merge](#input\_repository\_delete\_branch\_on\_merge) | Automatically delete head branch after a pull request is merged. | `bool` | `true` | no |
 | <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | n/a | yes |
 | <a name="input_repository_has_issues"></a> [repository\_has\_issues](#input\_repository\_has\_issues) | Enable the GitHub Issues on the repository. | `bool` | `true` | no |
 | <a name="input_repository_has_projects"></a> [repository\_has\_projects](#input\_repository\_has\_projects) | Enable the GitHub Project on the repository. | `bool` | `false` | no |
