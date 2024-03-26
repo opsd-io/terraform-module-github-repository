@@ -107,15 +107,19 @@ No modules.
 | [github_issue_label.skip_changelog](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/issue_label) | resource |
 | [github_repository.main](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository) | resource |
 | [github_repository_collaborator.admins](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository_collaborator) | resource |
+| [github_repository_collaborator.maintainers](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository_collaborator) | resource |
 | [github_repository_tag_protection.main](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository_tag_protection) | resource |
+| [github_team_repository.admins](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/team_repository) | resource |
 | [github_team_repository.maintainers](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/team_repository) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_admin_teams"></a> [admin\_teams](#input\_admin\_teams) | A set of the repository admin teams IDs. | `set(string)` | `[]` | no |
 | <a name="input_admins"></a> [admins](#input\_admins) | A set of users with an admin privileges. | `set(string)` | `[]` | no |
-| <a name="input_maintainers_team_id"></a> [maintainers\_team\_id](#input\_maintainers\_team\_id) | The repository maintainers github team ID. | `string` | `null` | no |
+| <a name="input_maintainer_teams"></a> [maintainer\_teams](#input\_maintainer\_teams) | A set of the repository admin teams IDs. | `set(string)` | `[]` | no |
+| <a name="input_maintainers"></a> [maintainers](#input\_maintainers) | A set of users with maintain privileges. | `set(string)` | `[]` | no |
 | <a name="input_repository_default_branch"></a> [repository\_default\_branch](#input\_repository\_default\_branch) | The default branch name. | `string` | `"main"` | no |
 | <a name="input_repository_delete_branch_on_merge"></a> [repository\_delete\_branch\_on\_merge](#input\_repository\_delete\_branch\_on\_merge) | Automatically delete head branch after a pull request is merged. | `bool` | `false` | no |
 | <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | n/a | yes |

@@ -80,14 +80,26 @@ variable "repository_default_branch" {
   default     = "main"
 }
 
-variable "maintainers_team_id" {
-  description = "The repository maintainers github team ID."
-  type        = string
-  default     = null
-}
-
 variable "admins" {
   description = "A set of users with an admin privileges."
+  type        = set(string)
+  default     = []
+}
+
+variable "maintainers" {
+  description = "A set of users with maintain privileges."
+  type        = set(string)
+  default     = []
+}
+
+variable "admin_teams" {
+  description = "A set of the repository admin teams IDs."
+  type        = set(string)
+  default     = []
+}
+
+variable "maintainer_teams" {
+  description = "A set of the repository admin teams IDs."
   type        = set(string)
   default     = []
 }

@@ -27,20 +27,36 @@ resource "github_repository" "main" {
   }
 }
 
-resource "github_team_repository" "maintainers" {
-  count = var.maintainers_team_id != null ? 1 : 0
-
-  team_id    = var.maintainers_team_id
-  repository = github_repository.main.name
-  permission = "maintain"
-}
-
 resource "github_repository_collaborator" "admins" {
   for_each = var.admins
 
   username   = each.key
   repository = github_repository.main.name
   permission = "admin"
+}
+
+resource "github_repository_collaborator" "maintainers" {
+  for_each = var.maintainers
+
+  username   = each.key
+  repository = github_repository.main.name
+  permission = "maintain"
+}
+
+resource "github_team_repository" "admins" {
+  for_each = var.admin_teams
+
+  team_id    = each.key
+  repository = github_repository.main.name
+  permission = "admin"
+}
+
+resource "github_team_repository" "maintainers" {
+  for_each = var.maintainer_teams
+
+  team_id    = each.key
+  repository = github_repository.main.name
+  permission = "maintain"
 }
 
 # Protect the main branch.
