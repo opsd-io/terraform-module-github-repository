@@ -1,6 +1,12 @@
-# Create repo from the template
-provider "github" {
-  owner = "opsd-io"
+terraform {
+  required_version = ">= 1.5.7"
+
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "6.2.0"
+    }
+  }
 }
 
 resource "github_repository" "main" {
@@ -19,7 +25,38 @@ resource "github_repository" "main" {
     owner      = var.repository_template_owner
     repository = var.repository_template_repository
   }
+}
 
+resource "github_repository_collaborator" "admins" {
+  for_each = var.admins
+
+  username   = each.key
+  repository = github_repository.main.name
+  permission = "admin"
+}
+
+resource "github_repository_collaborator" "maintainers" {
+  for_each = var.maintainers
+
+  username   = each.key
+  repository = github_repository.main.name
+  permission = "maintain"
+}
+
+resource "github_team_repository" "admins" {
+  for_each = var.admin_teams
+
+  team_id    = each.key
+  repository = github_repository.main.name
+  permission = "admin"
+}
+
+resource "github_team_repository" "maintainers" {
+  for_each = var.maintainer_teams
+
+  team_id    = each.key
+  repository = github_repository.main.name
+  permission = "maintain"
 }
 
 # Protect the main branch.

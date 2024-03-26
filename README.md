@@ -4,7 +4,7 @@ Meet **OPSd**. The unique and effortless way of managing cloud infrastructure.
 
 Visit our website [www.opsd.io](https://www.opsd.io) for more details.
 
-# terraform-github
+# terraform-module-github-repository
 
 ## Introduction
 
@@ -13,20 +13,67 @@ A terraform module responsible for creating GitHub repositories from the templat
 ## Usage
 
 ```
+data "github_team" "terraformers" {
+  slug = "terraformers"
+}
+
 module "terraform-github" {
-  source  = "github.com/opsd-io/terraform-github"
-	version = ">= 0.1.0"
+  source = "../../terraform-module-github-repository"
+
+  # Assign maintainers github team to the repo
+  maintainers_team_id = data.github_team.terraformers.id
 
   # Setup basic repository settings
-  repository_name        = "test_repo"
-  repository_description = "Brief description of the test_repo project."
-  repository_visibility  = "public"
+  repository_name        = "test-repo"
+  repository_description = "Created by terraform."
 }
 ```
 
 **IMPORTANT**: Make sure not to pin to master because there may be breaking changes between releases.
 
 You can find more example [here](examples).
+
+Before you start, you need to create a [GitHub token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) or use an existing one.
+
+Next, set the environment variable.
+
+```bash
+export GITHUB_TOKEN="ghp_your_github_token"
+```
+
+Now, you need to initialize terraform.
+
+```shell
+terraform init
+```
+
+Execute plan command.
+
+```shell
+terraform plan
+```
+
+and verify what will be created.
+
+The last step is to create the repo
+
+```shell
+terrafrorm apply
+```
+
+**IMPORTANT**: Please double-check the command output. The vital section can be seen in the example `Plan: 6 to add, 0 to change, 0 to destroy`. Ensure that you understand the changes you are making.
+
+Next, you will be asked
+
+```shell
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value:
+```
+
+Type `yes` to approve and let the magic happen.
 
 ## Related modules
 
@@ -37,14 +84,14 @@ No related modules.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.1 |
-| <a name="requirement_github"></a> [github](#requirement\_github) | >= 5.3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_github"></a> [github](#requirement\_github) | 6.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_github"></a> [github](#provider\_github) | >= 5.3.0 |
+| <a name="provider_github"></a> [github](#provider\_github) | 6.2.0 |
 
 ## Modules
 
@@ -54,27 +101,35 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [github_branch_protection_v3.main](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/branch_protection_v3) | resource |
-| [github_issue_label.breaking](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/issue_label) | resource |
-| [github_issue_label.chore](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/issue_label) | resource |
-| [github_issue_label.skip_changelog](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/issue_label) | resource |
-| [github_repository.main](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository) | resource |
-| [github_repository_tag_protection.main](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository_tag_protection) | resource |
+| [github_branch_protection_v3.main](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/branch_protection_v3) | resource |
+| [github_issue_label.breaking](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/issue_label) | resource |
+| [github_issue_label.chore](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/issue_label) | resource |
+| [github_issue_label.skip_changelog](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/issue_label) | resource |
+| [github_repository.main](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository) | resource |
+| [github_repository_collaborator.admins](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository_collaborator) | resource |
+| [github_repository_collaborator.maintainers](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository_collaborator) | resource |
+| [github_repository_tag_protection.main](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/repository_tag_protection) | resource |
+| [github_team_repository.admins](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/team_repository) | resource |
+| [github_team_repository.maintainers](https://registry.terraform.io/providers/integrations/github/6.2.0/docs/resources/team_repository) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_admin_teams"></a> [admin\_teams](#input\_admin\_teams) | A set of the repository admin teams IDs. | `set(string)` | `[]` | no |
+| <a name="input_admins"></a> [admins](#input\_admins) | A set of users with an admin privileges. | `set(string)` | `[]` | no |
+| <a name="input_maintainer_teams"></a> [maintainer\_teams](#input\_maintainer\_teams) | A set of the repository admin teams IDs. | `set(string)` | `[]` | no |
+| <a name="input_maintainers"></a> [maintainers](#input\_maintainers) | A set of users with maintain privileges. | `set(string)` | `[]` | no |
 | <a name="input_repository_default_branch"></a> [repository\_default\_branch](#input\_repository\_default\_branch) | The default branch name. | `string` | `"main"` | no |
 | <a name="input_repository_delete_branch_on_merge"></a> [repository\_delete\_branch\_on\_merge](#input\_repository\_delete\_branch\_on\_merge) | Automatically delete head branch after a pull request is merged. | `bool` | `true` | no |
-| <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | `"test_repo desc"` | no |
+| <a name="input_repository_description"></a> [repository\_description](#input\_repository\_description) | Brief description of the project. | `string` | n/a | yes |
 | <a name="input_repository_has_issues"></a> [repository\_has\_issues](#input\_repository\_has\_issues) | Enable the GitHub Issues on the repository. | `bool` | `true` | no |
 | <a name="input_repository_has_projects"></a> [repository\_has\_projects](#input\_repository\_has\_projects) | Enable the GitHub Project on the repository. | `bool` | `false` | no |
 | <a name="input_repository_has_wiki"></a> [repository\_has\_wiki](#input\_repository\_has\_wiki) | Enable the GitHub Wiki on the repository. | `bool` | `false` | no |
-| <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the repository. | `string` | `"test_repo"` | no |
-| <a name="input_repository_require_code_owner_reviews"></a> [repository\_require\_code\_owner\_reviews](#input\_repository\_require\_code\_owner\_reviews) | Require code owners review before PR can be merged | `bool` | `true` | no |
-| <a name="input_repository_require_conversation_resolution"></a> [repository\_require\_conversation\_resolution](#input\_repository\_require\_conversation\_resolution) | Resolve all the comments before PR can be merged | `bool` | `true` | no |
-| <a name="input_repository_required_approving_review_count"></a> [repository\_required\_approving\_review\_count](#input\_repository\_required\_approving\_review\_count) | Require N aprovales before PR can be merged | `number` | `1` | no |
+| <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the repository. | `string` | n/a | yes |
+| <a name="input_repository_require_code_owner_reviews"></a> [repository\_require\_code\_owner\_reviews](#input\_repository\_require\_code\_owner\_reviews) | Require code owners review before PR can be merged. | `bool` | `true` | no |
+| <a name="input_repository_require_conversation_resolution"></a> [repository\_require\_conversation\_resolution](#input\_repository\_require\_conversation\_resolution) | Resolve all the comments before PR can be merged. | `bool` | `true` | no |
+| <a name="input_repository_required_approving_review_count"></a> [repository\_required\_approving\_review\_count](#input\_repository\_required\_approving\_review\_count) | Require N aprovales before PR can be merged. | `number` | `1` | no |
 | <a name="input_repository_tag_protection_pattern"></a> [repository\_tag\_protection\_pattern](#input\_repository\_tag\_protection\_pattern) | The pattern of the tag to protect. | `string` | `"v*"` | no |
 | <a name="input_repository_template_owner"></a> [repository\_template\_owner](#input\_repository\_template\_owner) | The GitHub organization or user the template repository is owned by. | `string` | `"opsd-io"` | no |
 | <a name="input_repository_template_repository"></a> [repository\_template\_repository](#input\_repository\_template\_repository) | Name of the (template) repository from which to create the new repository. | `string` | `"terraform-module-template"` | no |
