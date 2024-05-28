@@ -8,6 +8,12 @@ variable "repository_description" {
   type        = string
 }
 
+variable "repository_topics" {
+  description = "The list of topics of the repository."
+  type        = list(string)
+  default     = null
+}
+
 variable "repository_visibility" {
   description = "Specify whether the created repository should be private or public. Available options `private` or `public`."
   type        = string
