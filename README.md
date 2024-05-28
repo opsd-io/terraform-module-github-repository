@@ -133,6 +133,7 @@ No modules.
 | <a name="input_repository_tag_protection_pattern"></a> [repository\_tag\_protection\_pattern](#input\_repository\_tag\_protection\_pattern) | The pattern of the tag to protect. | `string` | `"v*"` | no |
 | <a name="input_repository_template_owner"></a> [repository\_template\_owner](#input\_repository\_template\_owner) | The GitHub organization or user the template repository is owned by. | `string` | `"opsd-io"` | no |
 | <a name="input_repository_template_repository"></a> [repository\_template\_repository](#input\_repository\_template\_repository) | Name of the (template) repository from which to create the new repository. | `string` | `"terraform-module-template"` | no |
+| <a name="input_repository_topics"></a> [repository\_topics](#input\_repository\_topics) | The list of topics of the repository. | `list(string)` | `null` | no |
 | <a name="input_repository_visibility"></a> [repository\_visibility](#input\_repository\_visibility) | Specify whether the created repository should be private or public. Available options `private` or `public`. | `string` | `"public"` | no |
 
 ## Outputs
