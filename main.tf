@@ -12,6 +12,7 @@ terraform {
 resource "github_repository" "main" {
   name        = var.repository_name
   description = var.repository_description
+  topics      = var.repository_topics
 
   visibility = var.repository_visibility
 
